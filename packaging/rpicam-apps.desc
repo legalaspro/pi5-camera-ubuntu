@@ -1,7 +1,7 @@
 # Packaging metadata for rpicam-apps. Sourced by ./make-debs.sh.
 
 PKGNAME="rpicam-apps-rpi-local"
-PKGVERSION="1.5+noble1"
+PKGVERSION="1.5~noble1"
 PKGRELEASE="1"
 PKGARCH="arm64"
 PKGLICENSE="BSD-2-Clause"
@@ -9,7 +9,7 @@ PKGGROUP="video"
 PKGSOURCE="https://github.com/raspberrypi/rpicam-apps"
 # Maintainer for the unofficial Ubuntu .debs.
 MAINTAINER='Dmitri Manajev <dmitri@manajev.com>'
-REQUIRES="libcamera-rpi-local (>= 0.7.1), libdrm2, libavcodec60"
+REQUIRES="libcamera-rpi-local (>= 0.7.1~), libdrm2, libavcodec60"
 
 # Source subdirectory under --src-dir (default \$HOME/src).
 SRC_SUBDIR="rpicam-apps"

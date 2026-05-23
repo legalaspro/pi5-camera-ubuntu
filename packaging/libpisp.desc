@@ -1,7 +1,7 @@
 # Packaging metadata for libpisp. Sourced by ./make-debs.sh.
 
 PKGNAME="libpisp-rpi-local"
-PKGVERSION="1.5.0+noble1"
+PKGVERSION="1.5.0~noble1"
 PKGRELEASE="1"
 PKGARCH="arm64"
 PKGLICENSE="BSD-2-Clause"

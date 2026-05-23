@@ -1,7 +1,7 @@
 # Packaging metadata for Raspberry Pi's libcamera fork. Sourced by ./make-debs.sh.
 
 PKGNAME="libcamera-rpi-local"
-PKGVERSION="0.7.1+noble1"
+PKGVERSION="0.7.1~noble1"
 PKGRELEASE="1"
 PKGARCH="arm64"
 PKGLICENSE="LGPL-2.1+"
@@ -9,7 +9,7 @@ PKGGROUP="libs"
 PKGSOURCE="https://github.com/raspberrypi/libcamera"
 # Maintainer for the unofficial Ubuntu .debs.
 MAINTAINER='Dmitri Manajev <dmitri@manajev.com>'
-REQUIRES="libpisp-rpi-local (>= 1.5.0), python3-yaml, libgnutls30, libboost-program-options1.83.0"
+REQUIRES="libpisp-rpi-local (>= 1.5.0~), python3-yaml, libgnutls30, libboost-program-options1.83.0"
 
 # Source subdirectory under --src-dir (default \$HOME/src).
 SRC_SUBDIR="libcamera"
