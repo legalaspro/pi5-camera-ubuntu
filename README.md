@@ -12,8 +12,8 @@ ISP (PiSP) support required by sensors such as the IMX219 and IMX708.
 
 Two phases are planned:
 
-1. **Phase 1** — locally-built `.deb`s via `checkinstall`, distributed as
-   GitHub Release artifacts.
+1. **Phase 1** — locally-built `.deb`s via `meson install --destdir` +
+   `dpkg-deb`, distributed as GitHub Release artifacts.
 2. **Phase 2** — a proper Launchpad PPA (`debian/` packaging).
 
 ## Disclaimer
@@ -35,10 +35,8 @@ covered by the LICENSE file here.
 Download the latest release tarball and run the bundled installer:
 
 ```bash
-curl -fsSL https://github.com/<user>/pi5-camera-ubuntu/releases/latest/download/install-all.sh | bash
+curl -fsSL https://github.com/legalaspro/pi5-camera-ubuntu/releases/latest/download/install-all.sh | bash
 ```
-
-(Replace `<user>` with the actual GitHub user/org once published.)
 
 ## Build from source
 
@@ -49,7 +47,8 @@ See the [`scripts/`](scripts/) directory:
 - `build-rpicam-apps.sh` — builds and packages `rpicam-apps`
 - `build-all.sh`         — runs all three in order
 
-Artifacts are produced under [`checkinstall/`](checkinstall/) as `.deb` files.
+Artifacts are produced under [`packaging/dist/`](packaging/) as `.deb` files
+by [`packaging/make-debs.sh`](packaging/make-debs.sh).
 
 ## Credits
 

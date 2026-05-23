@@ -1,0 +1,31 @@
+# Packaging metadata for Raspberry Pi's libcamera fork. Sourced by ./make-debs.sh.
+
+PKGNAME="libcamera-rpi-local"
+PKGVERSION="0.7.1+noble1"
+PKGRELEASE="1"
+PKGARCH="arm64"
+PKGLICENSE="LGPL-2.1+"
+PKGGROUP="libs"
+PKGSOURCE="https://github.com/raspberrypi/libcamera"
+# Maintainer for the unofficial Ubuntu .debs.
+MAINTAINER='Dmitri Manajev <dmitri@manajev.com>'
+REQUIRES="libpisp-rpi-local (>= 1.5.0), python3-yaml, libgnutls30, libboost-program-options1.83.0"
+
+# Source subdirectory under --src-dir (default \$HOME/src).
+SRC_SUBDIR="libcamera"
+
+SUMMARY="Raspberry Pi libcamera fork with rpi/pisp pipeline handler (unofficial Ubuntu 24.04 build)"
+
+read -r -d '' DESCRIPTION <<'EOF' || true
+Raspberry Pi's fork of the libcamera userspace camera framework,
+built with the rpi/vc4 and rpi/pisp pipeline handlers and IPAs
+enabled. Required on Pi 5 to drive the PiSP hardware ISP from
+userspace; the libcamera 0.2.0 shipped by Ubuntu 24.04 predates
+PiSP support and sees zero cameras on Pi 5.
+
+Ships the cam CLI, GStreamer plugin, V4L2 compatibility layer,
+and the python bindings used by picamera2.
+
+Unofficial rebuild of the upstream sources for Ubuntu 24.04
+(Noble) arm64. Not provided or endorsed by Raspberry Pi Ltd.
+EOF

@@ -1,0 +1,33 @@
+# Packaging metadata for rpicam-apps. Sourced by ./make-debs.sh.
+
+PKGNAME="rpicam-apps-rpi-local"
+PKGVERSION="1.5+noble1"
+PKGRELEASE="1"
+PKGARCH="arm64"
+PKGLICENSE="BSD-2-Clause"
+PKGGROUP="video"
+PKGSOURCE="https://github.com/raspberrypi/rpicam-apps"
+# Maintainer for the unofficial Ubuntu .debs.
+MAINTAINER='Dmitri Manajev <dmitri@manajev.com>'
+REQUIRES="libcamera-rpi-local (>= 0.7.1), libdrm2, libavcodec60"
+
+# Source subdirectory under --src-dir (default \$HOME/src).
+SRC_SUBDIR="rpicam-apps"
+
+SUMMARY="Raspberry Pi camera CLI apps: rpicam-hello/still/vid/raw (unofficial Ubuntu 24.04 build)"
+
+read -r -d '' DESCRIPTION <<'EOF' || true
+Raspberry Pi's set of small command-line camera apps built on top
+of libcamera: rpicam-hello (preview), rpicam-still (capture image),
+rpicam-vid (record video), rpicam-raw, rpicam-detect. These are
+the standard ergonomic interface to the Pi camera stack and what
+most tutorials and downstream scripts shell out to.
+
+Built with drm support; libav, egl, qt, opencv, tflite, and hailo
+post-processing stages disabled (libavdevice-dev is not in Ubuntu's
+libavcodec-dev meta, and egl needs a GL desktop). rpicam-vid still
+records raw H.264 / MJPEG / YUV — remux to MP4 with ffmpeg if needed.
+
+Unofficial rebuild of the upstream sources for Ubuntu 24.04
+(Noble) arm64. Not provided or endorsed by Raspberry Pi Ltd.
+EOF

@@ -1,0 +1,45 @@
+name: build-debs
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git build-essential pkg-config cmake meson ninja-build \
+            python3-yaml python3-ply python3-jinja2 python3-dev pybind11-dev \
+            libboost-dev libboost-program-options-dev libboost-log-dev \
+            libgnutls28-dev openssl libssl-dev \
+            libyaml-dev libtiff-dev libjpeg-dev libpng-dev \
+            libglib2.0-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+            libdrm-dev libexif-dev libepoxy-dev libevent-dev \
+            v4l-utils
+
+      - name: Build libpisp, libcamera, rpicam-apps
+        run: bash scripts/build-all.sh --src-dir "${RUNNER_TEMP}/src"
+
+      - name: Package .debs (meson destdir + dpkg-deb)
+        run: bash packaging/make-debs.sh --src-dir "${RUNNER_TEMP}/src"
+
+      - name: List built artifacts
+        run: ls -lh packaging/dist/
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: packaging/dist/*.deb
+          generate_release_notes: true
+          fail_on_unmatched_files: true

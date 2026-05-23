@@ -1,0 +1,13 @@
+# Built .deb artifacts (published as GitHub Release assets, not committed)
+packaging/dist/
+packaging/staging/
+
+# Local source clones produced by scripts/build-*.sh (default $HOME/src,
+# but the CI workflow uses RUNNER_TEMP — listing both for safety)
+src/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

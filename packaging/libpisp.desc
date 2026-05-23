@@ -1,0 +1,28 @@
+# Packaging metadata for libpisp. Sourced by ./make-debs.sh.
+
+PKGNAME="libpisp-rpi-local"
+PKGVERSION="1.5.0+noble1"
+PKGRELEASE="1"
+PKGARCH="arm64"
+PKGLICENSE="BSD-2-Clause"
+PKGGROUP="libs"
+PKGSOURCE="https://github.com/raspberrypi/libpisp"
+# Maintainer for the unofficial Ubuntu .debs.
+MAINTAINER='Dmitri Manajev <dmitri@manajev.com>'
+REQUIRES="libstdc++6"
+
+# Source subdirectory under --src-dir (default \$HOME/src).
+SRC_SUBDIR="libpisp"
+
+SUMMARY="Raspberry Pi PiSP ISP userspace library (unofficial Ubuntu 24.04 build)"
+
+read -r -d '' DESCRIPTION <<'EOF' || true
+Userspace driver for the Raspberry Pi 5's PiSP (Pi Image Signal
+Processor) hardware block. Provides the runtime support that the
+rpi/pisp pipeline handler in libcamera links against to drive the
+ISP -- debayering, AE/AWB, lens shading correction, denoise -- in
+silicon rather than on the CPU.
+
+This is an unofficial rebuild of the upstream sources for Ubuntu
+24.04 (Noble) arm64. Not provided or endorsed by Raspberry Pi Ltd.
+EOF
