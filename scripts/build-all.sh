@@ -31,12 +31,30 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "[build-all] src dir: ${SRC_DIR}"
 echo "[build-all] scripts: ${SCRIPT_DIR}"
 
+# Chain steps via meson's uninstalled pkg-config files so each component can
+# find its dependencies in the previous build dir without `meson install`.
+prepend_uninstalled() {
+  local d="${SRC_DIR}/$1/build/meson-uninstalled"
+  if [[ -d "${d}" ]]; then
+    export PKG_CONFIG_PATH="${d}${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}"
+    echo "[build-all] PKG_CONFIG_PATH += ${d}"
+  fi
+}
+
+declare -A NEXT_DEPS=(
+  [build-libpisp.sh]=libpisp
+  [build-libcamera.sh]=libcamera
+)
+
 for step in build-libpisp.sh build-libcamera.sh build-rpicam-apps.sh; do
   echo
   echo "==================================================================="
   echo "[build-all] >>> ${step}"
   echo "==================================================================="
   bash "${SCRIPT_DIR}/${step}" --src-dir "${SRC_DIR}"
+  if [[ -n "${NEXT_DEPS[${step}]:-}" ]]; then
+    prepend_uninstalled "${NEXT_DEPS[${step}]}"
+  fi
 done
 
 echo
