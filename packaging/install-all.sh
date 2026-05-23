@@ -4,7 +4,7 @@
 set -euo pipefail
 
 REPO="legalaspro/pi5-camera-ubuntu"
-PKGS=(libpisp-rpi-local libcamera-rpi-local rpicam-apps-rpi-local)
+PKGS=(libpisp-rpi libcamera-rpi rpicam-apps-rpi)
 
 arch=$(dpkg --print-architecture)
 if [[ "${arch}" != "arm64" ]]; then

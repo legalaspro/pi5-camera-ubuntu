@@ -6,7 +6,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DIST_DIR="${HERE}/dist"
 
-PKGS=(libpisp-rpi-local libcamera-rpi-local rpicam-apps-rpi-local)
+PKGS=(libpisp-rpi libcamera-rpi rpicam-apps-rpi)
 
 shopt -s nullglob
 files=()
@@ -38,7 +38,7 @@ sudo apt install -y "${staged[@]}"
 
 echo
 echo "[local-install] done. Quick check:"
-dpkg -l | grep rpi-local || true
+dpkg -l | grep -E '^ii  (libpisp-rpi|libcamera-rpi|rpicam-apps-rpi) ' || true
 
 cat <<'EOF'
 

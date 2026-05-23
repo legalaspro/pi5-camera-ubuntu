@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # Reverse install order: dependents first.
-PKGS=(rpicam-apps-rpi-local libcamera-rpi-local libpisp-rpi-local)
+PKGS=(rpicam-apps-rpi libcamera-rpi libpisp-rpi)
 
 installed=()
 for pkg in "${PKGS[@]}"; do
@@ -42,6 +42,6 @@ to remove these lines (look just AFTER your `source /opt/ros/.../setup.bash`):
   export LIBCAMERA_IPA_PROXY_PATH=/usr/local/libexec/libcamera
 
 Verify removal:
-  dpkg -l | grep -E 'libpisp|libcamera|rpicam' && echo '(any rpi-local lines above are still installed)'
+  dpkg -l | grep -E '^ii  (libpisp-rpi|libcamera-rpi|rpicam-apps-rpi) ' && echo '(any rpi lines above are still installed)'
   cam -l   # should now be 'command not found' if /usr/local/bin/cam is gone
 EOF
