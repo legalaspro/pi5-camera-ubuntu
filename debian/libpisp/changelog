@@ -1,0 +1,11 @@
+libpisp-rpi (1.5.0-1~noble1) noble; urgency=medium
+
+  * Initial release under the cleaner name `libpisp-rpi`. The earlier
+    `libpisp-rpi-local` source package is superseded — "-local" was a
+    leftover from the GitHub Releases-only phase and no longer reflects
+    the package shipping via the Launchpad PPA.
+  * Unofficial Ubuntu build of upstream libpisp at
+    raspberrypi/libpisp@07e61ad07596b4c5729289e9016ec19fea7f0d19,
+    for Raspberry Pi 5 PiSP support on Ubuntu 24.04 (Noble).
+
+ -- Dmitri Manajev <dmitri@manajev.com>  Sun, 24 May 2026 12:00:00 +0000

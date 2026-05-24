@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# Build the Raspberry Pi fork of libcamera with rpi/vc4 + rpi/pisp pipelines
+# and IPAs, GStreamer plugin, V4L2 compat layer, and Python bindings.
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --buildsystem=meson
+
+# Match the options used by scripts/build-libcamera.sh.
+# Disable test/lc-compliance/qcam/documentation to keep the build chroot small
+# and skip dev-only paths.
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	    -Dpipelines=rpi/vc4,rpi/pisp \
+	    -Dipas=rpi/vc4,rpi/pisp \
+	    -Dv4l2=true \
+	    -Dgstreamer=enabled \
+	    -Dcam=enabled \
+	    -Dpycamera=enabled \
+	    -Dtest=false \
+	    -Dlc-compliance=disabled \
+	    -Dqcam=disabled \
+	    -Ddocumentation=disabled

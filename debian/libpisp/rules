@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+# Use debhelper's meson buildsystem; dh handles configure/build/test/install.
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --buildsystem=meson
+
+# libpisp's GStreamer plugin pulls in a heavy GStreamer dev stack we don't
+# need for the libcamera consumers; disable it to keep build-deps minimal.
+override_dh_auto_configure:
+	dh_auto_configure -- -Dgstreamer=disabled

@@ -1,0 +1,16 @@
+libcamera-rpi (0.7.1-1~noble1) noble; urgency=medium
+
+  * Initial release under the cleaner name `libcamera-rpi`. The earlier
+    `libcamera-rpi-local` source package is superseded — "-local" was a
+    leftover from the GitHub Releases-only phase and no longer reflects
+    the package shipping via the Launchpad PPA.
+  * Includes the prior nlohmann-json3-dev Build-Depends fix from the
+    libcamera-rpi-local ~noble2 iteration (libpisp's pkg-config declares
+    nlohmann_json as a public Requires).
+  * Unofficial Ubuntu build of the Raspberry Pi libcamera fork at
+    raspberrypi/libcamera@26bfadc66e8d7f727a993fe58174217b8a96f7f9
+    (tag v0.7.1+rpt20260429), with rpi/vc4 + rpi/pisp pipeline handlers
+    and IPAs enabled, GStreamer plugin, V4L2 compat shim, Python bindings,
+    and the IMX219 / IMX708 tuning files.
+
+ -- Dmitri Manajev <dmitri@manajev.com>  Sun, 24 May 2026 12:00:00 +0000

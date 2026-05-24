@@ -1,0 +1,33 @@
+Source: libpisp-rpi
+Section: libs
+Priority: optional
+Maintainer: Dmitri Manajev <dmitri@manajev.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ meson (>= 0.58.0),
+ ninja-build,
+ pkgconf,
+ libboost-dev,
+ libboost-log-dev,
+ libboost-thread-dev,
+ nlohmann-json3-dev,
+Standards-Version: 4.6.2
+Homepage: https://github.com/raspberrypi/libpisp
+Vcs-Browser: https://github.com/legalaspro/pi5-camera-ubuntu
+Vcs-Git: https://github.com/legalaspro/pi5-camera-ubuntu.git
+Rules-Requires-Root: no
+
+Package: libpisp-rpi
+Architecture: arm64
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: Raspberry Pi PiSP ISP userspace library (unofficial Ubuntu build)
+ Userspace driver for the Raspberry Pi 5's PiSP (Pi Image Signal Processor)
+ hardware block. Provides the runtime support that the rpi/pisp pipeline
+ handler in libcamera links against to drive the ISP — debayering, AE/AWB,
+ lens shading correction, denoise — in silicon rather than on the CPU.
+ .
+ This is an unofficial rebuild of the upstream sources for Ubuntu on Raspberry
+ Pi 5. Not provided or endorsed by Raspberry Pi Ltd.

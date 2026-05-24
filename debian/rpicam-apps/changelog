@@ -1,0 +1,13 @@
+rpicam-apps-rpi (1.12.0-1~noble1) noble; urgency=medium
+
+  * Initial release under the cleaner name `rpicam-apps-rpi`. The
+    `-rpi-local` suffix was a leftover from the GitHub Releases-only phase
+    and no longer reflects the package shipping via the Launchpad PPA.
+  * Unofficial Ubuntu build of upstream rpicam-apps at
+    raspberrypi/rpicam-apps@ea1bbcbea049d4e914c6dff5897c714cb791dc6f,
+    built on top of libcamera-rpi from this PPA. Ships rpicam-hello,
+    rpicam-still, rpicam-vid, rpicam-jpeg, rpicam-raw, and
+    camera-bug-report. Optional libav/egl/qt/opencv/tflite/hailo
+    post-processing stages are disabled.
+
+ -- Dmitri Manajev <dmitri@manajev.com>  Sun, 24 May 2026 12:00:00 +0000

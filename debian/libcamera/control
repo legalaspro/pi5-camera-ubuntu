@@ -1,0 +1,67 @@
+Source: libcamera-rpi
+Section: libs
+Priority: optional
+Maintainer: Dmitri Manajev <dmitri@manajev.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ meson (>= 0.60.0),
+ ninja-build,
+ pkgconf,
+ cmake,
+ git,
+ python3,
+ python3-yaml,
+ python3-ply,
+ python3-jinja2,
+ python3-dev,
+ pybind11-dev,
+ openssl,
+ libssl-dev,
+ libgnutls28-dev,
+ libboost-dev,
+ libboost-program-options-dev,
+ libdrm-dev,
+ libudev-dev,
+ libcap-dev,
+ libyaml-dev,
+ libtiff-dev,
+ libjpeg-dev,
+ libpng-dev,
+ libevent-dev,
+ libexif-dev,
+ libepoxy-dev,
+ libegl1-mesa-dev,
+ libglib2.0-dev,
+ libgstreamer1.0-dev,
+ libgstreamer-plugins-base1.0-dev,
+ libyuv-dev,
+ libpisp-rpi (>= 1.5.0~),
+ nlohmann-json3-dev,
+Standards-Version: 4.6.2
+Homepage: https://github.com/raspberrypi/libcamera
+Vcs-Browser: https://github.com/legalaspro/pi5-camera-ubuntu
+Vcs-Git: https://github.com/legalaspro/pi5-camera-ubuntu.git
+Rules-Requires-Root: no
+
+Package: libcamera-rpi
+Architecture: arm64
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libpisp-rpi (>= 1.5.0~),
+ python3-yaml,
+Recommends:
+ python3,
+Description: Raspberry Pi libcamera fork with rpi/pisp pipeline handler (unofficial Ubuntu build)
+ Raspberry Pi's fork of the libcamera userspace camera framework, built with
+ the rpi/vc4 and rpi/pisp pipeline handlers and IPAs enabled. Required on
+ Raspberry Pi 5 to drive the PiSP hardware ISP from userspace; the
+ libcamera 0.2.0 shipped by Ubuntu 24.04 predates PiSP support and sees
+ zero cameras on Pi 5.
+ .
+ Ships the cam CLI, GStreamer plugin, V4L2 compatibility layer, IPA modules,
+ IMX219/IMX708 tuning files, and the Python bindings used by picamera2.
+ .
+ This is an unofficial rebuild of upstream sources for Ubuntu on Raspberry
+ Pi 5. Not provided or endorsed by Raspberry Pi Ltd.

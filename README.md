@@ -30,13 +30,47 @@ covered by the LICENSE file here.
 - Raspberry Pi 5
 - Kernel 6.8 (stock Ubuntu kernel)
 
-## Install (one-liner)
+## Install
 
-Download the latest release tarball and run the bundled installer:
+### Option A — Launchpad PPA (recommended)
+
+```bash
+sudo add-apt-repository -y ppa:manajev/pi5-camera
+sudo apt update
+sudo apt install -y rpicam-apps-rpi    # pulls libcamera-rpi + libpisp-rpi too
+```
+
+Installs to `/usr/...` (system standard). `apt upgrade` brings in new versions
+automatically.
+
+### Option B — GitHub Release one-liner
 
 ```bash
 curl -fsSL https://github.com/legalaspro/pi5-camera-ubuntu/releases/latest/download/install-all.sh | bash
 ```
+
+Installs to `/usr/local/...` (the Phase 1 from-source convention). No PPA
+needed. Useful for off-grid setups or anywhere `add-apt-repository` is
+inconvenient.
+
+### If you also have ROS 2 (Jazzy/Humble/…)
+
+ROS prepends its own lib dir to `LD_LIBRARY_PATH` on `source setup.bash`,
+which would shadow our `libpisp.so.1`. Add ONE line to `~/.bashrc` **after**
+the `source /opt/ros/<distro>/setup.bash` line:
+
+```bash
+# Option A (PPA install at /usr/...):
+export LD_LIBRARY_PATH=/usr/lib/aarch64-linux-gnu:${LD_LIBRARY_PATH}
+
+# Option B (GitHub-Release install at /usr/local/...):
+export LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu:${LD_LIBRARY_PATH}
+```
+
+Pick the line matching how you installed. Then open a new shell and run
+`cam -l` — both cameras should list via the PiSP pipeline handler.
+
+If you don't use ROS, you don't need this line at all (for the PPA install).
 
 ## Build from source
 

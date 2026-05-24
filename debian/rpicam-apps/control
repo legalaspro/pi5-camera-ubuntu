@@ -1,0 +1,56 @@
+Source: rpicam-apps-rpi
+Section: video
+Priority: optional
+Maintainer: Dmitri Manajev <dmitri@manajev.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ meson (>= 0.60.0),
+ ninja-build,
+ pkgconf,
+ cmake,
+ git,
+ python3,
+ python3-yaml,
+ python3-ply,
+ python3-jinja2,
+ pybind11-dev,
+ libcamera-rpi (>= 0.7.1~),
+ libpisp-rpi (>= 1.5.0~),
+ nlohmann-json3-dev,
+ libdrm-dev,
+ libboost-dev,
+ libboost-program-options-dev,
+ libpng-dev,
+ libtiff-dev,
+ libjpeg-dev,
+ libexif-dev,
+ libssl-dev,
+ libgnutls28-dev,
+ libevent-dev,
+Standards-Version: 4.6.2
+Homepage: https://github.com/raspberrypi/rpicam-apps
+Vcs-Browser: https://github.com/legalaspro/pi5-camera-ubuntu
+Vcs-Git: https://github.com/legalaspro/pi5-camera-ubuntu.git
+Rules-Requires-Root: no
+
+Package: rpicam-apps-rpi
+Architecture: arm64
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libcamera-rpi (>= 0.7.1~),
+ libdrm2,
+Description: Raspberry Pi camera CLI apps: rpicam-hello/still/vid/raw (unofficial Ubuntu build)
+ Raspberry Pi's set of small command-line camera apps built on top of
+ libcamera: rpicam-hello (preview), rpicam-still (capture image), rpicam-vid
+ (record video), rpicam-raw, rpicam-detect. These are the standard ergonomic
+ interface to the Pi camera stack and what most tutorials and downstream
+ scripts shell out to.
+ .
+ Built with DRM preview support; libav, EGL, Qt, OpenCV, TFLite, and Hailo
+ post-processing stages disabled to keep the build chroot minimal and dodge
+ the libavdevice-dev gap on Ubuntu. rpicam-vid still records raw H.264 /
+ MJPEG / YUV — remux to MP4 with ffmpeg if a container is needed.
+ .
+ This is an unofficial rebuild of upstream sources for Ubuntu on Raspberry
+ Pi 5. Not provided or endorsed by Raspberry Pi Ltd.
