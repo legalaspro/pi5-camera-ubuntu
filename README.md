@@ -1,5 +1,12 @@
 # pi5-camera-ubuntu
 
+[![PPA](https://img.shields.io/badge/PPA-manajev%2Fpi5--camera-E95420?logo=ubuntu&logoColor=white)](https://launchpad.net/~manajev/+archive/ubuntu/pi5-camera)
+[![GitHub Release](https://img.shields.io/github/v/release/legalaspro/pi5-camera-ubuntu?display_name=tag&sort=semver&label=GitHub%20release)](https://github.com/legalaspro/pi5-camera-ubuntu/releases/latest)
+[![Build .debs](https://img.shields.io/github/actions/workflow/status/legalaspro/pi5-camera-ubuntu/build-debs.yml?label=CI)](https://github.com/legalaspro/pi5-camera-ubuntu/actions/workflows/build-debs.yml)
+[![Ubuntu 24.04 arm64](https://img.shields.io/badge/Ubuntu-24.04%20arm64-blue?logo=ubuntu&logoColor=white)](https://ubuntu.com/download/raspberry-pi)
+[![Raspberry Pi 5](https://img.shields.io/badge/Raspberry%20Pi-5-C51A4A?logo=raspberrypi&logoColor=white)](https://www.raspberrypi.com/products/raspberry-pi-5/)
+[![License: MIT](https://img.shields.io/github/license/legalaspro/pi5-camera-ubuntu?color=green)](LICENSE)
+
 Unofficial builds of the Raspberry Pi camera stack — `libpisp`, `libcamera`
 (Raspberry Pi fork), and `rpicam-apps` — for **Ubuntu 24.04 (arm64) on
 Raspberry Pi 5**, where the `libcamera` shipped by Ubuntu (0.2.0) is too old
