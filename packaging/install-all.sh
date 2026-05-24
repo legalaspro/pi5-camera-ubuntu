@@ -48,20 +48,15 @@ sudo apt-get -f install -y
 
 cat <<'EOF'
 
-[install-all] done.
+[install-all] done — .debs installed under /usr/local/.
+(For the PPA-installed variant under /usr/, see the README PPA section.)
 
-Add the following to ~/.bashrc AFTER any `source /opt/ros/.../setup.bash`
-line, so /usr/local wins over ROS's vendored libcamera/libpisp:
+/usr/local/lib/aarch64-linux-gnu/ is NOT on Ubuntu's default ld.so search
+path, so add this one line to ~/.bashrc — and if you use ROS, place it
+AFTER `source /opt/ros/<distro>/setup.bash` so it beats ROS's vendored libs:
 
-  # Pi 5 IMX219 / libcamera built from source — must beat ROS Jazzy's vendored libs.
-  export LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu:/usr/local/lib:${LD_LIBRARY_PATH}
-  export PKG_CONFIG_PATH=/usr/local/lib/aarch64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:${PKG_CONFIG_PATH}
+  export LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu:${LD_LIBRARY_PATH}
 
-  # Optional explicit libcamera paths; useful for debugging/mixed environments.
-  export LIBCAMERA_IPA_MODULE_PATH=/usr/local/lib/aarch64-linux-gnu/libcamera/ipa
-  export LIBCAMERA_IPA_PROXY_PATH=/usr/local/libexec/libcamera
-
-Then open a new shell and test:
-
+Open a new shell and test:
   cam -l   # expect both cameras listed via the PiSP pipeline handler
 EOF
